@@ -3,7 +3,7 @@
 # Django Default 403.html handler
 # http://wtanaka.com/django/django403
 #
-# Copyright (C) 2009 Wesley Tanaka <http://wtanaka.com/>
+# Copyright (C) 2009, 2012 Wesley Tanaka <http://wtanaka.com/>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 import django.http
 import django.template
 import django.template.loader
+import django.utils.translation
 
 def fallback_403(request):
   """
@@ -31,7 +32,8 @@ def fallback_403(request):
   Context: None
   """
   return django.http.HttpResponseForbidden(
-      _("""<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+      django.utils.translation.gettext(
+          """<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html><head>
 <title>403 Forbidden</title>
 </head><body>
